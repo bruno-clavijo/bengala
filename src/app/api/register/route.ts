@@ -14,9 +14,6 @@ export async function POST(req: Request) {
       );
     }
 
-    console.log("BODY:", body);
-console.log("DB_HOST:", process.env.DB_HOST);
-
     const connection = await mysql.createConnection({
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
@@ -36,7 +33,7 @@ console.log("DB_HOST:", process.env.DB_HOST);
     return NextResponse.json({ ok: true });
 
   } catch (error) {
-    console.error("ERROR COMPLETO:", error);
+    console.error(error);
   return NextResponse.json(
     { error: 'Error en el servidor' },
     { status: 500 }
