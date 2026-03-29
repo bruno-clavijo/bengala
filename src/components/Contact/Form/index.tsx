@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useContact } from "../../../hooks/useContact";
+import { useRouter } from "next/navigation";
 
 const ContactForm = () => {
 
@@ -39,6 +40,33 @@ const ContactForm = () => {
     }
     }, [success, error]);
 
+    const [timeLeft, setTimeLeft] = useState(120);
+    const router = useRouter();
+
+    useEffect(() => {
+  if (timeLeft <= 0) {
+    // redirigir al home
+    router.push("/");
+    return;
+  }
+
+  const timer = setTimeout(() => {
+    setTimeLeft(timeLeft - 1);
+  }, 1000);
+
+  return () => clearTimeout(timer);
+}, [timeLeft, router]);
+
+if (timeLeft <= 0) {
+  return (
+    <div className="text-center py-20">
+      <h2 className="text-2xl font-bold text-red-500">
+        El tiempo de registro ha expirado ⏳
+      </h2>
+    </div>
+  );
+}
+
     return (
         <>
             <section className="dark:bg-darkmode lg:pb-24 pb-16 pt-0">
@@ -53,6 +81,13 @@ const ContactForm = () => {
                                     submitForm(form);
                                 }}
                                 >
+
+                                <div className="mb-4 text-center">
+                                    <p className="text-red-500 font-bold">
+                                        Tiempo restante: {Math.floor(timeLeft / 60)}:
+                                        {String(timeLeft % 60).padStart(2, "0")}
+                                    </p>
+                                </div>
                                 <div className="sm:flex gap-3 w-full">
                                     <div className="mx-0 my-2.5 flex-1">
                                         <label htmlFor="name" className="pb-3 inline-block text-base text-SlateBlueText">Nombre Completo*</label>
