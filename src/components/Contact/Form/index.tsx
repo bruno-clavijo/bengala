@@ -71,6 +71,7 @@ const ContactForm = () => {
                                                 ? 'border-red-500 focus:border-red-500' 
                                                 : 'border-border dark:border-dark_border focus:border-primary'
                                             }`}
+                                            maxLength={50}
                                         />
                                     </div>
                                     
@@ -92,6 +93,7 @@ const ContactForm = () => {
                                                 ? 'border-red-500 focus:border-red-500' 
                                                 : 'border-border dark:border-dark_border focus:border-primary'
                                             }`}
+                                            maxLength={100}
                                         />
                                     </div>
                                     <div className="mx-0 my-2.5 flex-1">
@@ -128,6 +130,7 @@ const ContactForm = () => {
                                                 ? 'border-red-500 focus:border-red-500' 
                                                 : 'border-border dark:border-dark_border focus:border-primary'
                                             }`}
+                                            maxLength={300}
                                         />
                                     </div>
                                     
