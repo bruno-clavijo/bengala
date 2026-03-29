@@ -21,7 +21,7 @@ const Hero = () => {
                             data-aos-delay="300"
                             data-aos-duration="1000"
                         >
-                            Construye el futuro con Inteligencia Artificial
+                            Construye el futuro con Inteligencia Artificial 8
                         </h1>
                         <p
                             data-aos="fade-up"
